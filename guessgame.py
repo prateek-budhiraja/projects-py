@@ -3,10 +3,11 @@
 import random
 name=input("Enter your name: ")
 print(f"Hello, {name}, Welcome to the Guessing Game!")
-listOfWords=["apple", "mango", "something-good"]
-word=random.choice(listOfWords)
-indexes=random.sample(range(0, len(word)), 3)
-guessed=""
+listOfWords=["macbook", "ubuntu", "laptop", "redhat", "python", "scripting"]
+word=random.choice(listOfWords)     #choosing a word from list
+# getting 3 random characters from the selected word
+indexes=random.sample(range(0, len(word)), 3)   
+guessed=""      #this will store all the guessed characters
 for i in indexes:
     guessed+=word[i]
 chances=10
@@ -18,6 +19,7 @@ def playagain():
         global play
         play=False
     else:
+        #this will change all the global variables
         global word, indexes, guessed, chances
         word=random.choice(listOfWords)
         indexes=random.sample(range(0, len(word)), 3)
@@ -34,7 +36,7 @@ while play:
                 print(ch, end=" ")
             else:
                 print('_', end=" ")
-                won=False
+                won=False   #even if there is any unguessed character, it will set won to false
         if won:
             print("You Won!")
             print(f"Your score is {chances*10}%")
